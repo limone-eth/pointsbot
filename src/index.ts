@@ -33,7 +33,7 @@ app.listen(process.env.PORT || 3000, () => {
 });
 
 // run every 1 hour
-cron.schedule("0 * * * *", async () => {
+/*cron.schedule("0 * * * *", async () => {
   console.log("Elaborating Point stats...");
   try {
     await publishPointsStats();
@@ -41,10 +41,10 @@ cron.schedule("0 * * * *", async () => {
     console.error(e);
     await publishPointsStats();
   }
-});
+});*/
 
 // run every hour at 30 minutes
-cron.schedule("30 */2 * * *", async () => {
+cron.schedule("30 */8 * * *", async () => {
   console.log("Elaborating Farcaster leaderboard");
   try {
     await publishFarcasterLeaderboard(10);
