@@ -4,7 +4,6 @@ import {processPoolSwapEvent} from "./controllers/webhooks";
 import cron from "node-cron";
 
 import "dotenv/config";
-import {publishPointsStats} from "./utils/dextools";
 import {publishFarcasterLeaderboard} from "./utils/airstack/functions/fetch-token-holders";
 
 // init express app
