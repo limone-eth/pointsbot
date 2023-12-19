@@ -59,6 +59,7 @@ export async function processPoolSwapEvent(
     res.json({message: "No farcaster identity found for this address"});
     return;
   }
+  
   const text = `@${farcasterIdentity} swapped ${
     amountIn === tokensAmount
       ? `${formattedTokensAmount} $POINTS`
