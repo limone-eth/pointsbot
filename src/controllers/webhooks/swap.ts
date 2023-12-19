@@ -37,6 +37,8 @@ export async function processPoolSwapEvent(
     return;
   }
 
+  console.log("Found swap event at ", new Date().toISOString());
+
   const txUrl = getTransactionUrl(logsData.transaction.hash);
 
   // get transaction receipt to extract the sender
@@ -59,7 +61,7 @@ export async function processPoolSwapEvent(
     res.json({message: "No farcaster identity found for this address"});
     return;
   }
-  
+
   const text = `@${farcasterIdentity} swapped ${
     amountIn === tokensAmount
       ? `${formattedTokensAmount} $POINTS`
