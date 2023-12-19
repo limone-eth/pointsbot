@@ -7,7 +7,6 @@ import {decodeTransferEvent} from "../../utils/smart-contracts/decode-events";
 import {getFarcasterIdentity} from "../../utils/web3-bio";
 import {publishCast} from "../../utils/farcaster";
 
-// TODO: introduce support for transfer events
 export async function processTransferEvent(
   req: Request,
   res: Response
@@ -73,7 +72,7 @@ export async function processTransferEvent(
 
     const text = `${fromText} transferred ${formatBigNumber(
       value,
-      parseInt(process.env.TOKEN_DECIMALS)
+      constants.TOKEN_DECIMALS
     )} $${constants.TOKEN_SYMBOL} to ${toText}`;
 
     console.log(text, txUrl);
