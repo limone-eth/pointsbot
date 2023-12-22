@@ -5,7 +5,7 @@ import {decodeSwapEvent} from "../../utils/smart-contracts/decode-events";
 import {getFarcasterIdentity} from "../../utils/web3-bio";
 import {providers} from "ethers";
 import {publishCast} from "../../utils/farcaster";
-import {formatBigNumber, getTransactionUrl} from "../../utils";
+import {TransactionUrlWebsite, formatBigNumber, getTransactionUrl} from "../../utils";
 
 export async function processPoolSwapEvent(
   req: Request,
@@ -39,7 +39,10 @@ export async function processPoolSwapEvent(
 
   console.log("Found swap event at ", new Date().toISOString());
 
-  const txUrl = getTransactionUrl(logsData.transaction.hash);
+  const txUrl = getTransactionUrl(
+    logsData.transaction.hash,
+    TransactionUrlWebsite.ZAPPER
+  );
 
   // get transaction receipt to extract the sender
   const provider = new providers.JsonRpcProvider(process.env.ALCHEMY_RPC_URL);

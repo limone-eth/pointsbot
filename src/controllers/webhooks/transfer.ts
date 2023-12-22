@@ -1,7 +1,12 @@
 import {Request, Response} from "express";
 import {AlchemyWebhookEvent} from "../../utils/alchemy";
 import {constants} from "../../constants";
-import {formatAddress, formatBigNumber, getTransactionUrl} from "../../utils";
+import {
+  TransactionUrlWebsite,
+  formatAddress,
+  formatBigNumber,
+  getTransactionUrl,
+} from "../../utils";
 import {providers} from "ethers";
 import {decodeTransferEvent} from "../../utils/smart-contracts/decode-events";
 import {getFarcasterIdentity} from "../../utils/web3-bio";
@@ -37,7 +42,10 @@ export async function processTransferEvent(
     return;
   }
 
-  const txUrl = getTransactionUrl(logsData.transaction.hash);
+  const txUrl = getTransactionUrl(
+    logsData.transaction.hash,
+    TransactionUrlWebsite.ZAPPER
+  );
 
   // get transaction receipt to extract the sender
   const provider = new providers.JsonRpcProvider(process.env.ALCHEMY_RPC_URL);
