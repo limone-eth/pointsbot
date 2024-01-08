@@ -7,14 +7,10 @@ import {
 import {publishCast} from "../utils/farcaster";
 
 export const publishTokenStats = async (): Promise<void> => {
-  const tokenInfo = await getTokenInfo(constants.TOKEN_ADDRESS, "base");
-  const tokenPriceInfo = await getTokenPriceInfo(
-    constants.TOKEN_ADDRESS,
-    "base"
-  );
+  const tokenInfo = await getTokenInfo(constants.TOKEN_ADDRESS);
+  const tokenPriceInfo = await getTokenPriceInfo(constants.TOKEN_ADDRESS);
   const poolPriceInfo = await getPoolPriceInfo(
-    constants.TOKEN_UNISWAP_POOL_ADDRESS,
-    "base"
+    constants.TOKEN_UNISWAP_POOL_ADDRESS
   );
 
   const text = `📈 $points stats: \n\n- market cap -> $${(
